@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Praktikum Event Listener</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 20px;
+        background-color: #f4f4f4;
+        color: #333;
+      }
+
+      h1 {
+        text-align: center;
+        color: #4572a0;
+      }
+
+      section {
+        margin-bottom: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      h2 {
+        color: #333;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      button {
+        background-color: #4572a0;
+        color: white;
+        border: none;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        font-size: 1rem;
+      }
+
+      button:hover {
+        background-color: #4572a0;
+      }
+
+      input {
+        padding: 10px;
+        margin: 10px 0;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        width: 100%;
+        max-width: 300px;
+      }
+
+      ul {
+        list-style-type: none;
+        padding: 0;
+      }
+
+      li {
+        background: #e0e0e0;
+        margin: 5px 0;
+        padding: 10px;
+        border-radius: 4px;
+      }
+
+      #message,
+      #output {
+        color: #555;
+        font-style: italic;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Praktikum Event Listener</h1>
+
+    <!-- Tugas 1 -->
+    <section>
+      <h2>Tugas 1: Event Click untuk Mengubah Warna Paragraf</h2>
+      <p id="text">Ini adalah paragraf.</p>
+      <button id="changeColorBtn">Change Color</button>
+    </section>
+
+    <!-- Tugas 2 -->
+    <section>
+      <h2>Tugas 2: Event Mouseover untuk Menampilkan Pesan</h2>
+      <button id="hoverBtn">Hover me!</button>
+      <p id="message"></p>
+    </section>
+
+    <!-- Tugas 3 -->
+    <section>
+      <h2>Tugas 3: Event Keydown untuk Menampilkan Karakter yang Ditekan</h2>
+      <input type="text" id="inputField" placeholder="Ketik sesuatu..." />
+      <p id="output"></p>
+    </section>
+
+    <!-- Tugas Tambahan -->
+    <section>
+      <h2>Tugas Tambahan: Membuat Daftar Dinamis</h2>
+      <input type="text" id="itemInput" placeholder="Tambahkan item..." />
+      <button id="addItemBtn">Add Item</button>
+      <ul id="itemList"></ul>
+    </section>
+
+    <script>
+      // Tugas 1: Event click untuk Mengubah Warna Paragraf
+      document
+        .getElementById("changeColorBtn")
+        .addEventListener("click", function () {
+          document.getElementById("text").style.color = "lightblue";
+        });
+
+      // Tugas 2: Event mouseover untuk Menampilkan Pesan
+      document
+        .getElementById("hoverBtn")
+        .addEventListener("mouseover", function () {
+          document.getElementById("message").textContent =
+            "Mouse is over the button!";
+        });
+
+      // Tugas 3: Event keydown untuk Menampilkan Karakter yang Ditekan
+      document
+        .getElementById("inputField")
+        .addEventListener("keydown", function (event) {
+          document.getElementById(
+            "output"
+          ).textContent = `Karakter terakhir yang ditekan: ${event.key}`;
+        });
+
+      // Tugas Tambahan: Membuat Daftar Dinamis
+      document
+        .getElementById("addItemBtn")
+        .addEventListener("click", function () {
+          const itemValue = document.getElementById("itemInput").value;
+          if (itemValue.trim() !== "") {
+            const newItem = document.createElement("li");
+            newItem.textContent = itemValue;
+            document.getElementById("itemList").appendChild(newItem);
+            document.getElementById("itemInput").value = ""; // Kosongkan input setelah menambahkannya
+          } else {
+            alert("Mohon masukkan item sebelum menambahkannya ke daftar!");
+          }
+        });
+    </script>
+  </body>
+</html>
